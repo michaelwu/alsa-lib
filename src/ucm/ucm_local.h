@@ -38,6 +38,7 @@
 
 #include "local.h"
 #include "use-case.h"
+#include "pthread.h"
 
 #define MAX_FILE		256
 #define ALSA_USE_CASE_DIR	ALSA_CONFIG_DIR "/ucm"

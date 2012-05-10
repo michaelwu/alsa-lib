@@ -428,7 +428,7 @@ beginning:</P>
 
 #ifdef HAVE_LIBPTHREAD
 static pthread_mutex_t snd_config_update_mutex =
-				PTHREAD_RECURSIVE_MUTEX_INITIALIZER_NP;
+				PTHREAD_MUTEX_INITIALIZER;
 #endif
 
 struct _snd_config {
@@ -3505,7 +3505,7 @@ int snd_config_hook_load(snd_config_t *root, snd_config_t *config, snd_config_t 
 			struct dirent **namelist;
 			int n;
 
-			n = scandir(fi[idx].name, &namelist, config_filename_filter, versionsort);
+			n = scandir(fi[idx].name, &namelist, config_filename_filter, alphasort);
 			if (n > 0) {
 				int j;
 				err = 0;

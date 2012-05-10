@@ -418,7 +418,7 @@ int snd_ctl_elem_add_enumerated(snd_ctl_t *ctl, const snd_ctl_elem_id_t *id,
 	info->value.enumerated.names_length = bytes;
 	p = buf;
 	for (i = 0; i < items; ++i)
-		p = stpcpy(p, names[i]) + 1;
+		p = memcpy(p, names[i], sizeof(names[i]) + 1) + sizeof(names[i]) + 1;
 
 	err = ctl->ops->element_add(ctl, info);
 

@@ -26,7 +26,7 @@
  *
  */
 
-#include <sys/shm.h>
+//#include <sys/shm.h>
 #include <sys/ioctl.h>
 #include <limits.h>
 #include "pcm_local.h"
