@@ -501,6 +501,7 @@ static int parse_modifier(snd_use_case_mgr_t *uc_mgr,
 	INIT_LIST_HEAD(&modifier->transition_list);
 	INIT_LIST_HEAD(&modifier->dev_list.list);
 	INIT_LIST_HEAD(&modifier->value_list);
+	INIT_LIST_HEAD(&modifier->active_list);
 	list_add_tail(&modifier->list, &verb->modifier_list);
 	modifier->name = strdup(name);
 
@@ -647,6 +648,7 @@ static int parse_device(snd_use_case_mgr_t *uc_mgr,
 	INIT_LIST_HEAD(&device->transition_list);
 	INIT_LIST_HEAD(&device->dev_list.list);
 	INIT_LIST_HEAD(&device->value_list);
+	INIT_LIST_HEAD(&device->active_list);
 	list_add_tail(&device->list, &verb->device_list);
 	device->name = strdup(name);
 

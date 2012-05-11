@@ -619,7 +619,7 @@ static int set_modifier(snd_use_case_mgr_t *uc_mgr,
 	if (enable && err >= 0) {
 		list_add_tail(&modifier->active_list, &uc_mgr->active_modifiers);
 	} else if (!enable) {
-		list_del(&modifier->active_list);
+		list_del_init(&modifier->active_list);
 	}
 	return err;
 }
@@ -650,7 +650,7 @@ static int set_device(snd_use_case_mgr_t *uc_mgr,
 	if (enable && err >= 0) {
 		list_add_tail(&device->active_list, &uc_mgr->active_devices);
 	} else if (!enable) {
-		list_del(&device->active_list);
+		list_del_init(&device->active_list);
 	}
 	return err;
 }
@@ -1514,7 +1514,7 @@ static int switch_device(snd_use_case_mgr_t *uc_mgr,
         xold = find_device(uc_mgr, uc_mgr->active_verb, old_device, 1);
         if (xold == NULL)
                 return -ENOENT;
-        list_del(&xold->active_list);
+        list_del_init(&xold->active_list);
         xnew = find_device(uc_mgr, uc_mgr->active_verb, new_device, 1);
         list_add_tail(&xold->active_list, &uc_mgr->active_devices);
         if (xnew == NULL)
@@ -1528,7 +1528,7 @@ static int switch_device(snd_use_case_mgr_t *uc_mgr,
 					       &uc_mgr->active_verb->value_list,
 					       &uc_mgr->value_list);
                         if (err >= 0) {
-                                list_del(&xold->active_list);
+                                list_del_init(&xold->active_list);
                                 list_add_tail(&xnew->active_list, &uc_mgr->active_devices);
                         }
                         seq_found = 1;
@@ -1580,7 +1580,7 @@ static int switch_modifier(snd_use_case_mgr_t *uc_mgr,
 					       &uc_mgr->active_verb->value_list,
 					       &uc_mgr->value_list);
                         if (err >= 0) {
-                                list_del(&xold->active_list);
+                                list_del_init(&xold->active_list);
                                 list_add_tail(&xnew->active_list, &uc_mgr->active_modifiers);
                         }
                         seq_found = 1;
