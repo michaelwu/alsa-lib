@@ -71,7 +71,7 @@
 #define HAVE_LIBDL 1
 
 /* Have libpthread */
-#define HAVE_LIBPTHREAD 1
+/* #define HAVE_LIBPTHREAD 1 */
 
 /* Define to 1 if you have the `resmgr' library (-lresmgr). */
 /* #undef HAVE_LIBRESMGR */
