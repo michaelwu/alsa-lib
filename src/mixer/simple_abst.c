@@ -266,6 +266,7 @@ static void private_free(snd_mixer_class_t *class)
  * \param classp Pointer to returned mixer simple element class handle (or NULL
  * \return 0 on success otherwise a negative error code
  */
+#ifdef HAVE_LIBDL
 int snd_mixer_simple_basic_register(snd_mixer_t *mixer,
 				    struct snd_mixer_selem_regopt *options,
 				    snd_mixer_class_t **classp)
@@ -355,6 +356,7 @@ int snd_mixer_simple_basic_register(snd_mixer_t *mixer,
 		*classp = class;
 	return 0;
 }
+#endif /* HAVE_LIBDL */
 
 /**
  * \brief Basic Mixer Abstraction - Get information about device
